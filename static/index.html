@@ -5,11 +5,11 @@
     <title>Lilly JS recruitment task</title>
     <link rel="stylesheet" href="styles.css">
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-    <script src="scripts.js" defer></script>
 </head>
 <body>
 <div>
-    <span class="spinner"></span>
+    <span id="spinner"></span> 
+    <!-- Switched from class to Id since the spinner was permenantly disappearing as a class when the loading was completed -->
 </div>
 <h1>Stocks</h1>
 <p>
@@ -21,6 +21,6 @@
 
 <canvas id="chart" width="1000" height="600"></canvas>
 
-
+<script src="scripts.js" defer></script>
 </body>
 </html>

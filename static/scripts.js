@@ -62,14 +62,42 @@ $(document).ready(() => {//Waits for Jquery to be ready
                                 let IDStock = index+1;
                                 $stocks.append('<p> Stock Number: '+ IDStock +' Stock Name: '+ StockSymbols[num] +' value: '+ StockValues.value + ' time stamp: ' + StockValues.timestamp+ '</p>')
                             })
-              
-                            $('#spinner').style.display = "none";
+
                         }
                       })
                     });
                   })
-                  //$stocks.append('<p> Avalible Stocks: '+num+' '+ StockSymbols[num] + '</p>')
                 }
+              })
+              var delayInMilliseconds = 3000; //2 second
+
+              setTimeout(function() {
+                $('#spinner').removeAttr('id');
+              }, delayInMilliseconds);
+
+          }
+      })
+  })
+});
+
+/*
+Scrapped Code
+$(document).ready(() => {
+  $(function() {
+      var $stocks = $('#values');
+      $.ajax({
+          type: 'GET',
+          url: '/stocks/FB',
+          success: function(stock) {
+              $.each(stock, function(index, stock) {
+                  $stocks.append('<p> value: '+ stock.value + ' time stamp: ' + stock.timestamp+ '</p>')
+              })
+
+              $('#spinner').style.display = "none";
+          }
+      })
+  })
+});
                   /*
                   for(let num = 0; num < StockSymbols.length();num++){
                     $(document).ready(() => {//Waits for Jquery to be ready
@@ -88,29 +116,7 @@ $(document).ready(() => {//Waits for Jquery to be ready
                       });
                     })
                   }
+                  //$stocks.append('<p> Avalible Stocks: '+num+' '+ StockSymbols[num] + '</p>')
                   */
-              })
-          }
-      })
-  })
-});
 
-/*
-$(document).ready(() => {
-  $(function() {
-      var $stocks = $('#values');
-      $.ajax({
-          type: 'GET',
-          url: '/stocks/FB',
-          success: function(stock) {
-              $.each(stock, function(index, stock) {
-                  $stocks.append('<p> value: '+ stock.value + ' time stamp: ' + stock.timestamp+ '</p>')
-              })
-
-              $('#spinner').style.display = "none";
-          }
-      })
-  })
-});
-*/
 

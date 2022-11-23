@@ -1,10 +1,10 @@
 
 
 
-.spinner{
+#spinner{
   font-size: 140px;
 }
-.spinner:after {
+#spinner:after {
   display: inline-block;
   content: '◌';
   animation: rotation_anim 1s linear infinite;
