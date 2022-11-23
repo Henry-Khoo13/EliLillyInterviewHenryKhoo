@@ -23,17 +23,94 @@ drawTriangle([35, 50], [65, 50], [50, 35])
 drawLine([50, 550], [950, 550])
 drawTriangle([950, 535], [950, 565], [965, 550])
 //Draws the graph
+/*
+$(document).ready(() => {//Waits for Jquery to be ready
+  $(function() {
+      var $stocks = $('#stocksymbols');
+      $.ajax({
+          type: 'GET',
+          url: '/stocks',
+          success: function(i) {
+              $.each(i, function(index, i) {
+                  $stocks.append('<p> Avalible Stocks: '+ i + '</p>')
+              })
 
-$(function(){
-  var $items = $('#items');
-  $.ajax({
-    type: 'GET',
-    url: '/stocks',
-    success: function(data){
-      console.log('success',data);
-      $.each(data,function(i,item){
-        $items.append('<li> my item </li>');
-      });
-    }
-  });
-})
+              $('#spinner').style.display = "none";
+          }
+      })
+  })
+});
+*/
+$(document).ready(() => {//Waits for Jquery to be ready
+  $(function() {
+      var $stocks = $('#stocksymbols');
+      $.ajax({
+          type: 'GET',
+          url: '/stocks',
+          success: function(StockSymbols) {
+              $.each(StockSymbols, function(index, StockSymbols) {
+                let testnum= StockSymbols.length;
+                //$stocks.append('<p> Avalible Stocks: '+ StockSymbols[testnum]+ '</p>')
+                for(let num = 0; num < testnum;num++){
+                  $(document).ready(() => {//Waits for Jquery to be ready
+                    $(function() {
+                      $.ajax({
+                        type: 'GET',
+                        url: '/stocks/'+ StockSymbols[num],
+                        success: function(StockValues) {
+                            $.each(StockValues, function(index, StockValues) {
+                                let IDStock = index+1;
+                                $stocks.append('<p> Stock Number: '+ IDStock +' Stock Name: '+ StockSymbols[num] +' value: '+ StockValues.value + ' time stamp: ' + StockValues.timestamp+ '</p>')
+                            })
+              
+                            $('#spinner').style.display = "none";
+                        }
+                      })
+                    });
+                  })
+                  //$stocks.append('<p> Avalible Stocks: '+num+' '+ StockSymbols[num] + '</p>')
+                }
+                  /*
+                  for(let num = 0; num < StockSymbols.length();num++){
+                    $(document).ready(() => {//Waits for Jquery to be ready
+                      $(function() {
+                        $.ajax({
+                          type: 'GET',
+                          url: '/stocks/'+ StockSymbols[num],
+                          success: function(StockValues) {
+                              $.each(StockValues, function(index, StockValues) {
+                                  $stocks.append('<p> Stock Name:'+ StockSymbols[num] +'value: '+ StockValues.value + ' time stamp: ' + StockValues.timestamp+ '</p>')
+                              })
+                
+                              $('#spinner').style.display = "none";
+                          }
+                        })
+                      });
+                    })
+                  }
+                  */
+              })
+          }
+      })
+  })
+});
+
+/*
+$(document).ready(() => {
+  $(function() {
+      var $stocks = $('#values');
+      $.ajax({
+          type: 'GET',
+          url: '/stocks/FB',
+          success: function(stock) {
+              $.each(stock, function(index, stock) {
+                  $stocks.append('<p> value: '+ stock.value + ' time stamp: ' + stock.timestamp+ '</p>')
+              })
+
+              $('#spinner').style.display = "none";
+          }
+      })
+  })
+});
+*/
+

@@ -27,6 +27,9 @@ app.listen(3000, () => console.log('Server is running!'))
 //port 3000, message server that it is listening
 /* Notes
 Can Place into the search bar:
+http://localhost:3000
+http://localhost:3000/stocks
+http://localhost:3000/stocks/FB
 http://127.0.0.1:3000/stocks To get all the stocks 
 http://127.0.0.1:3000/stocks/FB To get all the stocks of facebook with timestamps
 */
