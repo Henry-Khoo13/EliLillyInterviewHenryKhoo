@@ -63,6 +63,9 @@ $(document).ready(() => {//Waits for Jquery to be ready
                                 $stocks.append('<p> Stock Number: '+ IDStock +' Stock Name: '+ StockSymbols[num] +' value: '+ StockValues.value + ' time stamp: ' + StockValues.timestamp+ '</p>')
                             })
 
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                          alert("Failed to Fetch Data \n Status: "+xhr.status+" \n Thrown Error: "+thrownError);
                         }
                       })
                     });
@@ -75,6 +78,9 @@ $(document).ready(() => {//Waits for Jquery to be ready
                 $('#spinner').removeAttr('id');
               }, delayInMilliseconds);
 
+          },
+          error: function (xhr, ajaxOptions, thrownError) {
+            alert("Failed to Fetch Data \n Status: "+xhr.status+" \n Thrown Error: "+thrownError);
           }
       })
   })
