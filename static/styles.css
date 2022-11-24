@@ -2,6 +2,7 @@ body{
   text-align:center;
   background-color:honeydew;
 }
+/*Edits made to the body of the webpage*/
 
 #spinner{
   font-size: 140px;
@@ -19,7 +20,8 @@ body{
     transform: rotatez(360deg);
 	}
 }
-/*https://codepen.io/yochans/pen/RwoRdBe*/
+/*The above spinner ID rotates infinitely on the Z axis */
+
 
 
 #chart {
@@ -27,7 +29,7 @@ body{
     margin:auto;
     background-color: aliceblue;
 }
-
+/*The above aligns the chart and adds a alice blue background*/
 
 /*Scrapped Code: 
 
@@ -153,3 +155,4 @@ Scrapped HTML
   /*content: '◌';*/
   		/*transform: rotatey(360deg);*/
     /*transform: rotatex(360deg);*/
+    /*https://codepen.io/yochans/pen/RwoRdBe Link used for finding out how to rotate elements*/ 

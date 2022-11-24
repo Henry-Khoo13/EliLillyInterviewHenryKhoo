@@ -7,30 +7,30 @@ const app = express()
 app.use(express.static(path.join(__dirname, 'static')))
 //Routes to the static Folder
 
-app.get('/stocks', async (req, res,next) => {
+app.get('/stocks', async (req, res,next) => {//Retrieves the data from /Stocks 
   try{
     const stockSymbols = await stocks.getStocks()
-    console.log(stockSymbols)
+    console.log(stockSymbols)//Displays the information (Stocks avalible) collected to the console
     res.send({ stockSymbols })
   }
   catch(err){
     next(err)
-  }
+  }//Try catch used to identify errors and allow the program to continue running if the Stock isn't avalible 
 
 })
 
-app.get('/stocks/:symbol', async (req, res, next) => {
+app.get('/stocks/:symbol', async (req, res, next) => {//Retrieves the data from specified Stock (e.g FB, IBM, APPL, etc)
   try {
     const { params: { symbol } } = req
     const data = await stocks.getStockPoints(symbol, new Date())
-    console.log(symbol)
-    console.log(data)
+    console.log(symbol)//Displays the information (Stocks avalible) collected to the console
+    console.log(data)//Along with displaying the data (values and timestamps)
     res.send(data)
   }
   catch(err)
   {
     next(err)
-  }
+  }//Try catch used to identify errors and allow the program to continue running if the Stock isn't avalible 
 
 })
 
