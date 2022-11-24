@@ -27,17 +27,17 @@ drawTriangle([950, 535], [950, 565], [965, 550])
 $(document).ready(() => {//Waits for Jquery to be ready
   $(function() {
       var $stocks = $('#values');
-      //const Arr = []
       $.ajax({
           type: 'GET',
           url: '/stocks',
           success: function(StockSymbols) {
               $.each(StockSymbols, function(index, StockSymbols) {
                 let testnum= StockSymbols.length;
-
                 for(let num = 0; num < testnum; num++){
-                  //drawLine([50, 50], [50, 550])
+
                   const Arr = []
+                  //Array Holds all the Stock Values so that the program that draws the graph, can fetch the previous stock value and draw a line between the two points
+
 
                   $(document).ready(() => {//Waits for Jquery to be ready
                     $(function() {
@@ -55,7 +55,7 @@ $(document).ready(() => {//Waits for Jquery to be ready
                               colour = 'Green'
                               break;
                             case 'FB':
-                              colour = 'Yellow'
+                              colour = 'Red'
                               break;
                             case 'EA':
                               colour = 'Brown'
@@ -65,29 +65,22 @@ $(document).ready(() => {//Waits for Jquery to be ready
                               break;
                           }
 
-                          //drawLine([50, 50], [50, 550])
-                          $stocks.append('<h2> Stock Name: ' + StockSymbols[num]+' Colour on Chart: '+colour+ '</h2>')
+                          $stocks.append('<h2> Stock Name: ' + StockSymbols[num]+' (Colour on Chart: '+colour+ ') </h2>')
                           $.each(StockValues, function(index, StockValues) {
                             let IDStock = index+1;
                             var date = new Date(StockValues.timestamp) 
                             //https://www.tutorialrepublic.com/faq/how-to-convert-a-unix-timestamp-to-time-in-javascript.php#:~:text=Answer%3A%20Use%20the%20new%20Date,%3A00%3A00%20UTC).
-                            //let Num = StockValuesArray[index]
-                            //Arr.push(StockValues.value)
+
                             Arr.push(550 - (Math.round((StockValues.value/100)*500)))
 
                             if(index != 0){
-                              let XValue1=(IDStock*90)-90;
-                              let XValue2=IDStock*90;
+                              let XValue1=((index-1)*90)+50;
+                              let XValue2=(index*90)+50;
                               let YValue1=Arr[index-1];
                               let YValue2=Arr[index];
                               drawLine([XValue1, YValue1], [XValue2, YValue2],colour)
                             }
-                            //drawLine([50, 50], [XValue, YValue])
-                            /*
-                            for(let x = 0; x < Arr.length;x++){
-                              $stocks.append('<li> DATA WITHIN ' +Arr[x]+ '</li>')
-                            }*/
-                            //$stocks.append('<p> Test'+Arr[0]+ '</p>')
+
                             $stocks.append('<p> S'+ IDStock +': Value: '+ StockValues.value + ' Time Stamp: ' + date+ '</p>')
                           })
 
@@ -120,7 +113,7 @@ $(document).ready(() => {//Waits for Jquery to be ready
 });
 
 
-
+//Scrapped Code
 /*
 Scrapped Code
 $(document).ready(() => {
@@ -304,4 +297,14 @@ new Chart("myChart", {
   }
 });
 */
-
+/*                            //let Num = StockValuesArray[index]
+                            //Arr.push(StockValues.value)
+                                                        //drawLine([50, 50], [XValue, YValue])
+                            
+                            for(let x = 0; x < Arr.length;x++){
+                              $stocks.append('<li> DATA WITHIN ' +Arr[x]+ '</li>')
+                            }
+                            //$stocks.append('<p> Test'+Arr[0]+ '</p>')
+                            
+                          //drawLine([50, 50], [50, 550])
+                            */
