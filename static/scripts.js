@@ -1,6 +1,28 @@
 const canvas = document.getElementById('chart')
 const ctx = canvas.getContext('2d')
 
+
+function DrawTitle(){//Draws a Title for the Line Graph
+  ctx.font = "30px Arial"
+  ctx.textAlign = "center"
+  ctx.fillText("Graphical Representation of Stocks", 475, 35)
+}
+
+DrawTitle()
+
+function DrawLabels(){
+  ctx.font = "12px Arial";
+  let NumLabel = ["100","90","80","70","60","50","40","30","20","10","0"]
+  for(let num = 1;num<12;num++){
+    ctx.fillText(NumLabel[num-1], 20, 50*num);
+  }
+  ctx.font = "15px Arial";
+  ctx.fillText("Timestamp (X)", 900, 575)
+  ctx.font = "15px Arial";
+  ctx.fillText("Value (Y)", 33, 20)
+}
+DrawLabels()
+
 function drawLine (start, end, style) {
   ctx.beginPath()
   ctx.strokeStyle = style || 'black'
@@ -64,15 +86,15 @@ $(document).ready(() => {//Waits for Jquery to be ready
                               colour = 'Orange'
                               break;
                           }
-
+                          
                           $stocks.append('<h2> Stock Name: ' + StockSymbols[num]+' (Colour on Chart: '+colour+ ') </h2>')
                           $.each(StockValues, function(index, StockValues) {
                             let IDStock = index+1;
                             var date = new Date(StockValues.timestamp) 
+
                             //https://www.tutorialrepublic.com/faq/how-to-convert-a-unix-timestamp-to-time-in-javascript.php#:~:text=Answer%3A%20Use%20the%20new%20Date,%3A00%3A00%20UTC).
 
                             Arr.push(550 - (Math.round((StockValues.value/100)*500)))
-
                             if(index != 0){
                               let XValue1=((index-1)*90)+50;
                               let XValue2=(index*90)+50;

@@ -1,8 +1,6 @@
 body{
   text-align:center;
-}
-#values{
-  
+  background-color:honeydew;
 }
 
 #spinner{
@@ -12,31 +10,27 @@ body{
   display: inline-block;
   content: '◌';
   animation: rotation_anim 1s linear infinite;
-  /*position: relative;*/
-  /*content: '◌';*/
 }
 @keyframes rotation_anim {
   0%{
     transform: rotatez(0deg);
   }
 	100% {
-		/*transform: rotatey(360deg);*/
-    /*transform: rotatex(360deg);*/
     transform: rotatez(360deg);
 	}
 }
 /*https://codepen.io/yochans/pen/RwoRdBe*/
 
 
-
-
 #chart {
     border: 1px solid black;
     margin:auto;
+    background-color: aliceblue;
 }
 
 
 /*Scrapped Code: 
+
 
 The below code was used to help gain an understanding of Java script, CSS, and HTML.
 div.rotate {
@@ -154,3 +148,8 @@ Scrapped HTML
 </p>
 
 */
+
+  /*position: relative;*/
+  /*content: '◌';*/
+  		/*transform: rotatey(360deg);*/
+    /*transform: rotatex(360deg);*/
