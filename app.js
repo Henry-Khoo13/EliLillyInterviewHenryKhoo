@@ -36,6 +36,8 @@ app.get('/stocks/:symbol', async (req, res, next) => {
 
 
 app.listen(3000, () => console.log('Server is running!'))
+
+
 //port 3000, message server that it is listening
 /* Notes
 Can Place into the search bar:
